@@ -4,7 +4,7 @@ import User, { CreateUser } from "./user.model";
 class UserController {
   constructor(private repository: Repository<User>) {}
 
-  async create({ name, email, password }: CreateUser): Promise<User> {
+  async register({ name, email, password }: CreateUser): Promise<User> {
     const user = this.repository.create({ name, email, password });
     await this.repository.save(user);
 

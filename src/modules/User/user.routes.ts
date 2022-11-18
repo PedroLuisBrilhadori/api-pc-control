@@ -12,8 +12,8 @@ const userHandler = new UserHandler(userController, hash);
 export default () => {
   const routes = Router();
 
-  routes.post(`/`, UserValidator.create, (req: Request, res: Response) => {
-    return userHandler.create(req, res);
+  routes.post(`/`, UserValidator.register, (req: Request, res: Response) => {
+    return userHandler.register(req, res);
   });
 
   return routes;

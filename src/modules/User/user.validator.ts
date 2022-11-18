@@ -3,7 +3,7 @@ import { RequestHandler } from "express";
 import { body } from "express-validator";
 
 class UserValidator {
-  create: RequestHandler[] = [
+  register: RequestHandler[] = [
     body("name")
       .isString()
       .withMessage({ message: "O nome do usuário deve ser do tipo string" })

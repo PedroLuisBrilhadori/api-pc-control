@@ -16,7 +16,7 @@ export const start = async () => {
 
     const app = App().app;
 
-    app.use("/v1", routes);
+    app.use("/api", routes);
 
     app.listen(process.env.PORT || 3000, () => {
       console.log(`${StringUtils.app} | O Servidor foi iniciado: ${StringColors.yellow}http://localhost:${process.env.PORT || 3000}${StringColors.null}`);

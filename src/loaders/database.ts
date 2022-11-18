@@ -1,7 +1,6 @@
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
 import User from "@modules/User/user.model";
-import Record from "@modules/Record/record.model";
 
 dotenv.config();
 
@@ -14,7 +13,7 @@ const AppDataSource = new DataSource({
   useNewUrlParser: true,
   synchronize: true,
   logging: true,
-  entities: [User, Record],
+  entities: [User],
 });
 
 export default AppDataSource;

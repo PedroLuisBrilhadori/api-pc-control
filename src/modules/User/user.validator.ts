@@ -32,6 +32,28 @@ class UserValidator {
 
     validateSanitizedRequest,
   ];
+
+  login: RequestHandler[] = [
+    body("email")
+      .isString()
+      .withMessage({ message: "O email do usuário deve ser do tipo string" })
+      .isEmail()
+      .withMessage({ message: "O usuário deve conter um email válido" })
+      .notEmpty()
+      .withMessage({ message: "O usuário deve conter um email" })
+      .isLength({ max: 100 })
+      .withMessage({ message: "O email do usuário deve conter no máximo 100 caracteres" }),
+
+    body("password")
+      .isString()
+      .withMessage({ message: "A senha do usuário deve ser do tipo string" })
+      .notEmpty()
+      .withMessage({ message: "O usuário deve conter uma senha" })
+      .isLength({ min: 6, max: 40 })
+      .withMessage({ message: "A senha do usuário deve conter no minímo 6 e no máximo 40 caracteres" }),
+
+    validateSanitizedRequest,
+  ];
 }
 
 export default new UserValidator();

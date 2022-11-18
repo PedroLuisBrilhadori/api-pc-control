@@ -12,6 +12,12 @@ class UserController {
 
     return user;
   }
+
+  async login(email: string): Promise<User> {
+    const user = await this.repository.findOne({ where: { email } });
+
+    return user;
+  }
 }
 
 export default UserController;

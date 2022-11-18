@@ -1,4 +1,4 @@
-import { hash } from "bcrypt";
+import bcrypt from "bcrypt";
 import { Request, Response, Router } from "express";
 import { UserRepository } from "src/repositores";
 import UserController from "./user.controller";
@@ -7,13 +7,19 @@ import UserValidator from "./user.validator";
 
 const repository = UserRepository();
 const userController = new UserController(repository);
-const userHandler = new UserHandler(userController, hash);
+const userHandler = new UserHandler(userController, bcrypt);
+
+bcrypt;
 
 export default () => {
   const routes = Router();
 
-  routes.post(`/`, UserValidator.register, (req: Request, res: Response) => {
+  routes.post(`/register`, UserValidator.register, (req: Request, res: Response) => {
     return userHandler.register(req, res);
+  });
+
+  routes.post("/login", UserValidator.login, (req: Request, res: Response) => {
+    return userHandler.login(req, res);
   });
 
   return routes;
